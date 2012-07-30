@@ -1,0 +1,30 @@
+<div id="featured">
+    <% for image in @slider %>
+      <%= image_tag(image.img.url, "data-caption"=>"#caption_#{image.id}") %>
+    <% end %>
+    <% for image in @slider %>
+      <span class="orbit-caption" id="caption_<%= image.id %>">
+        <%= image.description %>
+      </span>
+    <% end %>
+</div>
+<% if @is_admin && @is_admin == true %>
+  <%= page_title("目录管理") %>
+  <ul class="catogory_field">
+  <% @catogories.each do |catogory| %>
+    <li>
+      <div class="catogory_item">
+        <div class="catogory_name" style="font-size: 20px;">
+          <%= link_to(catogory.name, catogory) %>
+        </div>
+        <div class="catogory_function">
+          <%= link_to '编辑', edit_catogory_path(catogory) %>
+          <%= link_to '删除', catogory, :confirm => 'Are you sure?', :method => :delete %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  </ul>
+
+  <%= link_to '新建目录', new_catogory_path %>
+<% end %>

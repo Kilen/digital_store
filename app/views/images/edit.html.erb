@@ -1,0 +1,9 @@
+<%= page_title("编辑图片") %>
+<p>现在的图片:</p>
+<div class="image_show">
+  <%= image_tag(@image.img.url) %>
+</div>
+<%= render("form") %>
+
+<%= link_to 'Show', @image %> |
+<%= link_to 'Back', images_path %>

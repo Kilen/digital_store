@@ -1,0 +1,10 @@
+<%= form_for(@artical) do |f| %>
+  <%= render(:partial=>"shared/form_errors", :object=>@artical) %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.hidden_field(:catogory_id, :value => @catogory.id) %>
+  <%= f.submit %>
+<% end %>

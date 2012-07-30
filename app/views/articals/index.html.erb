@@ -1,0 +1,25 @@
+<h1>Listing articals</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @articals.each do |artical| %>
+  <tr>
+    <td><%= artical.title %></td>
+    <td><%= artical.content %></td>
+    <td><%= link_to 'Show', artical %></td>
+    <td><%= link_to 'Edit', edit_artical_path(artical, :catogory_id=> @image.catogory.id) %></td>
+    <td><%= link_to 'Destroy', artical, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Artical', new_artical_path %>

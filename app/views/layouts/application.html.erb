@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DigitalStore</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <%= stylesheet_link_tag "application", :media => :all %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="container">
+	<div id="header">
+	</div>
+	<div id="border">
+		<div id="main">
+			<div id="left">
+				<div id="menu">
+        <ul>
+          <% for catogory in @catogories %>
+            <% next if catogory.name == "幻灯片" && @is_admin && @is_admin == false%>
+            <li> <%= link_to(catogory.name, catogory) %> </li>
+          <% end %>
+        </ul>
+        </div>
+				<div id="menubottom">
+					<ul>
+            <li><%= link_to("主页", catogories_path) %></li>
+            <li><%= link_to("关于我们", "#") %></li>
+            <li><%= link_to("联系我们", "#") %></li>
+					</ul>
+				</div>
+
+      </div>
+
+      <div id="right">
+        <div class="content">
+          <%= render(:partial => "shared/flash_info") %>
+          <%= yield %>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div id="footer">
+    <div id="copyright">
+      <span>© Copyright 佳能, 2012.<br /> All rights reserved.</span> 
+    </div>
+  </div>	
+<div id="footerend"></div>
+</div>
+
+
+</body>
+</html>

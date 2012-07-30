@@ -1,0 +1,13 @@
+<%= form_for(@image,
+             :html=>{:multipart=>true, :class=>"nice"}) do |f| %>
+  <%= render(:partial=>'shared/form_errors', :object=>@image) %>
+
+  对应目录: <%= @catogory.name %> <br />
+  <%= f.label(:img, "请从您的电脑中选择一张图片上传(格式支持'bmp', 'gif', 'jpg', 'png')") %>
+  <%= f.file_field(:img) %>
+  <%= f.label(:description, "图片描述") %>
+  <%= f.text_area(:description) %>
+  <%= f.hidden_field(:catogory_id, :value => @catogory.id) %>
+  <%= f.submit("创建图片") %>
+<% end %>
+

@@ -1,0 +1,10 @@
+<%= page_title(@artical.title) %>
+<p>
+  <%= @artical.content %>
+</p>
+
+
+<% if @is_admin && @is_admin == true %>
+  <%= link_to 'Edit', edit_artical_path(@artical, :catogory_id=> @artical.catogory.id) %> |
+  <%= link_to 'Back', catogory_path(@artical.catogory)%>
+<% end %>

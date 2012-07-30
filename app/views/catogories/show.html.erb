@@ -1,0 +1,56 @@
+<% is_slider = false %>
+<% is_slider = true if @catogory.name == "幻灯片" %>
+
+<%= page_title(@catogory.name) %>
+<div class="catogory_description">
+  <p>
+    <%= @catogory.description %>
+  </p>
+</div>
+
+<% if @is_admin && @is_admin == true %>
+  <%= link_to '编辑本目录', edit_catogory_path(@catogory) %> |
+  <%= link_to("新建图片", new_image_path(:catogory_id => @catogory.id)) %> |
+  <% unless is_slider %>
+    <%= link_to("新建文章", new_artical_path(:catogory_id => @catogory.id)) %> |
+  <% end %>
+  <%= link_to '退后', catogories_path %>
+<% end %>
+
+<% unless @catogory.images.blank? %>
+  <ul class="image_field">
+    <% for image in @catogory.images %>
+      <li>
+        <div class="image_item">
+          <%= link_to(image_path(image)) do %>
+            <%= image_tag(image.img.url) %>
+          <% end %>
+          <p>
+            <%= image.description %>
+          </p>
+          <% if @is_admin && @is_admin == true %>
+            <%= link_to '编辑', edit_image_path(image, :catogory_id=> image.catogory.id) %> |
+            <%= link_to '删除', image, :confirm => 'Are you sure?', :method => :delete %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+<% unless @catogory.articals.blank? %>
+  <ul class="artical_field">
+    <% for artical in @catogory.articals %>
+      <li>
+        <div class="artical_item">
+            <div class="artical_title"><%= link_to(artical.title, artical_path(artical)) %></div>
+            <% if @is_admin && @is_admin == true %>
+              <%= link_to '编辑', edit_artical_path(artical, :catogory_id=> artical.catogory.id) %> |
+              <%= link_to '删除', artical, :confirm => 'Are you sure?', :method => :delete %>
+            <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+

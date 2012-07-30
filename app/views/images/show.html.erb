@@ -1,0 +1,11 @@
+<%= page_title("图片展示") %>
+<% if @is_admin && @is_admin == true %>
+  <%= link_to 'Edit', edit_image_path(@image, :catogory_id=> @image.catogory.id) %> |
+  <%= link_to 'Back', catogory_path(@image.catogory)%>
+<% end %>
+<div class="image_show">
+  <%= image_tag(@image.img.url) %>
+</div>
+<div class="description">
+  <%= @image.description %>
+</div>

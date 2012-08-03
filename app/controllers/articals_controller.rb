@@ -13,7 +13,6 @@ class ArticalsController < ApplicationController
     if @catogory
       @artical = Artical.new
     else
-      flash[:error] = "没有找到对应的目录, 不能操作文章, 请重试"
       redirect_back()
     end
   end
@@ -24,7 +23,6 @@ class ArticalsController < ApplicationController
     if @catogory
       @artical = Artical.find(params[:id])
     else
-      flash[:error] = "没有找到对应的目录, 不能操作文章, 请重试"
       redirect_back()
     end
   end
@@ -35,10 +33,8 @@ class ArticalsController < ApplicationController
     @artical = Artical.new(params[:artical])
 
     if @artical.save
-      flash[:success] = "文章创建成功!"
       redirect_to(@artical)
     else
-      flash[:error] = "文章创建失败! 请重试"
       render(:action => "new")
     end
   end
@@ -49,10 +45,8 @@ class ArticalsController < ApplicationController
     @artical = Artical.find(params[:id])
 
     if @artical.update_attributes(params[:artical])
-      flash[:success] = "文章更新成功!"
       redirect_to(@artical)
     else
-      flash[:error] = "文章更新失败! 请重试"
       render(:action => "edit")
     end
   end
@@ -62,7 +56,6 @@ class ArticalsController < ApplicationController
   def destroy
     @artical = Artical.find(params[:id])
     @artical.destroy
-    flash[:info] = "文章已被删除"
     redirect_back()
   end
 end

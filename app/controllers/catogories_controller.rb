@@ -4,7 +4,8 @@ class CatogoriesController < ApplicationController
   # GET /catogories
   # GET /catogories.json
   def index
-    @slider = Catogory.find_by_name("幻灯片").images;
+    @slider = Catogory.find_by_name("幻灯片")
+    @slider = @slider ? @slider.image : []
   end
 
   # GET /catogories/1

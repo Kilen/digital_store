@@ -1,4 +1,12 @@
-<div id="featured">
+<% if @slider.blank? %>
+  <% if @is_admin && @is_admin == true %>
+    <div class="help_info">
+      <h4>幻灯片帮助</h4>
+      <p>如果想要添加幻灯片功能, 那么请新建一个叫做"幻灯片"的目录, 在里面添加你想要的照片就可以, 照片的描述也同样会添加到幻灯片的对应的图片中</p>
+    </div>
+  <% end %>
+<% else %>
+  <div id="featured">
     <% for image in @slider %>
       <%= image_tag(image.img.url, "data-caption"=>"#caption_#{image.id}") %>
     <% end %>
@@ -7,7 +15,8 @@
         <%= image.description %>
       </span>
     <% end %>
-</div>
+  </div>
+<% end %>
 <% if @is_admin && @is_admin == true %>
   <%= page_title("目录管理") %>
   <ul class="catogory_field">

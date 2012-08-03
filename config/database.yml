@@ -1,10 +1,10 @@
 development:
   adapter: postgresql 
   encoding: unicode
-  database: development
+  database: digital_development
   pool: 5
-  username: lin
-  password:
+  username: postgres
+  password: lin900627
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -12,15 +12,15 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: test
+  database: digital_test
   pool: 5
-  username: lin
-  password:
+  username: postgres
+  password: lin900627
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: production
+  database: digital_production
   pool: 5
-  username: lin
-  password:
+  username: postgres
+  password: lin900627

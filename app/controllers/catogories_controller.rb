@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class CatogoriesController < ApplicationController
   #before_filter in application: get_all_catogories
 
